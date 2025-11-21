@@ -2,35 +2,38 @@ import styled from "styled-components";
 import { NameInput } from "../molecules/NameInput";
 import { MailInput } from "../molecules/MailInput";
 import { InquireInput } from "../molecules/InquireInput";
-import { Title } from "../molecules/Title";
 import { Button } from "../atoms/button/Button";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export const InputForm = (props) => {
-  const { NameValue, OnNameChange, MailValue, OnMailChange,InquireValue,OnInquireChange } = props;
-  const onClick = () => {
-    if (!window.woff.getAccessToken()) {
-    window.woff.login();
-    return;
-  }
-  
-    window.woff.sendMessage({
-        content: `kintone問い合わせ\n名前：${NameValue}\nメールアドレス：${MailValue}\n問い合わせ内容${InquireValue}`
-    })
-        .then(() => {
-            console.log("メッセージ送信完了");
-        })
-        .catch((err) => {
-            console.log('error', err);
-        });
+  const { userName } = props;
+  const [nameValue, setNameText] = useState("");
+  const [mailValue, setMailText] = useState("");
+  const [inquireValue, setInquireText] = useState("");
+  const navigate = useNavigate();
 
+  const OnNameChange = (e) => {
+    setNameText(e.target.value);
   };
+  const OnMailChange = (e) => {
+    setMailText(e.target.value);
+  };
+  const OnInquireChange = (e) => {
+    setInquireText(e.target.value);
+  };
+
+  //確認画面に遷移
+  const onClick = () => {
+    navigate(`/confirm/${nameValue}/${mailValue}/${inquireValue}`);
+  };
+
   return (
     <StyledForm>
-        <Title/>
       <StyledInputArea>
-        <NameInput value={NameValue} onChange={OnNameChange} />
-        <MailInput value={MailValue} onChange={OnMailChange} />
-        <InquireInput value={InquireValue} onChange={OnInquireChange}/>
+        <NameInput value={nameValue} onChange={OnNameChange} />
+        <MailInput value={mailValue} onChange={OnMailChange} />
+        <InquireInput value={inquireValue} onChange={OnInquireChange} />
       </StyledInputArea>
       <div>
         <Button text="確認" onClick={onClick} />

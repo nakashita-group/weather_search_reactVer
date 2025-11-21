@@ -1,12 +1,14 @@
 import "./App.css";
-import { InputForm } from "./organisms/InputForm";
 import { useEffect, useState } from "react";
+import { Outlet } from "react-router-dom";
+import { Title } from "./molecules/Title";
+import { InputForm } from "./organisms/InputForm";
+import { ConfirmForm } from "./organisms/ConfirmForm";
+import { Route, Routes, BrowserRouter } from "react-router-dom";
+import { WorkReport } from "./WorkReport";
 
 function App() {
-  const [nameText, setNameText] = useState("");
-  const [mailText, setMailText] = useState("");
-  const [inquireText, setInquireText] = useState("");
-  const [UserName, setUserName] = useState("");
+  const [UserName, setUserName] = useState("テストユーザー");
 
   useEffect(()=>{
     if (!window.woff) return;
@@ -43,25 +45,17 @@ function App() {
   });
   },[]);
 
-  const OnNameChange = (e) => {
-    setNameText(e.target.value);
-  };
-  const OnMailChange = (e) => {
-    setMailText(e.target.value);
-  };
-  const OnInquireChange = (e) => {
-    setInquireText(e.target.value);
-  };
   return (
     <>
-      <InputForm
-        NameValue={nameText}
-        OnNameChange={OnNameChange}
-        MailValue={mailText}
-        OnMailChange={OnMailChange}
-        InquireValue={inquireText}
-        OnInquireChange={OnInquireChange}
-      />
+      <Title />
+      <Outlet />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<InputForm/>} />
+          <Route path="/confirm/:nameValue/:mailValue/:inquireValue" element={<ConfirmForm />} />
+          <Route path="/workReport" element={<WorkReport/>}/>
+        </Routes>
+      </BrowserRouter>
     </>
   );
 }
