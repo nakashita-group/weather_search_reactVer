@@ -33,7 +33,6 @@ function App() {
     window.woff.getProfile()
       .then((profile) => {
         console.log("プロフィール情報:", profile);
-        console.log(profile.displayName);
         setUser(profile.displayName);
       })
 
