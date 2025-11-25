@@ -18,10 +18,10 @@ export const ConfirmForm = (props) => {
       window.woff
       .sendMessage({
         content: `kintone問い合わせ
-        \n名前：${nameValue}
-        \nメールアドレス：${mailValue}
-        \n問い合わせ内容：${inquireValue}
-        \n送信者：${user}`,
+        名前：${nameValue}
+        メールアドレス：${mailValue}
+        問い合わせ内容：${inquireValue}
+        送信者：${user}`,
       })
       .then(() => {
         console.log("メッセージ送信完了");
