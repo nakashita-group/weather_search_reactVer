@@ -1,15 +1,14 @@
 import "./App.css";
 import { useEffect, useState } from "react";
+import useUserStore, { userStore } from "./store/useUserStore";
 import { Outlet } from "react-router-dom";
 import { Title } from "./molecules/Title";
-import { InputForm } from "./organisms/InputForm";
-import { ConfirmForm } from "./organisms/ConfirmForm";
+import { InputForm } from "./pages/InputForm";
+import { ConfirmForm } from "./pages/ConfirmForm";
 import { Route, Routes, BrowserRouter } from "react-router-dom";
-import { WorkReport } from "./WorkReport";
 
 function App() {
-  const [UserName, setUserName] = useState("テストユーザー");
-
+  const setUser=useUserStore((state)=>state.setUser)
   useEffect(()=>{
     if (!window.woff) return;
 
@@ -35,6 +34,8 @@ function App() {
       .then((profile) => {
         console.log("プロフィール情報:", profile);
         setUserName(profile.displayName);
+        console.log(profile.displayName);
+        // setUser()
       })
 
   })
@@ -53,7 +54,6 @@ function App() {
         <Routes>
           <Route path="/" element={<InputForm/>} />
           <Route path="/confirm/:nameValue/:mailValue/:inquireValue" element={<ConfirmForm />} />
-          <Route path="/workReport" element={<WorkReport/>}/>
         </Routes>
       </BrowserRouter>
     </>

@@ -43,7 +43,7 @@ export const InputForm = (props) => {
 };
 
 const StyledInputArea = styled.div`
-  margin: 10px 0px 50px 0px;
+  margin: 10px 30px 50px 30px;
 `;
 
 const StyledForm = styled.div`

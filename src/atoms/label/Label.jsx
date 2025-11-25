@@ -3,11 +3,12 @@ import styled from "styled-components";
 export const Label=(props)=>{
     const {text}=props;
     return(
-        <label>{text}</label>
+        <StyledLabel>{text}</StyledLabel>
     )
 }
 
-const StyledButton=styled.button`
-        padding: 5px 10px;
-        border-radius: 15px;
+const StyledLabel=styled.div`
+        padding:10px ;
+        border: 2px solid black;
+        width:200px;
         `;

@@ -1,7 +1,7 @@
 import React from "react";
 import { Route, Routes, BrowserRouter } from "react-router-dom";
-import { InputForm } from "../organisms/InputForm";
-import { Confirm } from "../organisms/ConfirmForm";
+import { InputForm } from "../pages/InputForm";
+import { Confirm } from "../pages/ConfirmForm";
 import App from "../App";
 
 export const Router = () => {

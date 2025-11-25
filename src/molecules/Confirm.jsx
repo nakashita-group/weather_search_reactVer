@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { Input } from "../atoms/input/Input";
 import { Label } from "../atoms/label/Label";
 
 export const Confirm = (props) => {

@@ -4,7 +4,7 @@ export const Title = () => {
   return (
     <Container>
       <StyledIcon src="/icon.png"/>
-      <h1>Kintone問い合わせ</h1>
+      <StyledTitle>Kintone問い合わせ</StyledTitle>
     </Container>
   );
 };
@@ -22,3 +22,8 @@ const Container = styled.div`
   margin:20px;
   justify-content: center;
 `;
+
+const StyledTitle=styled.div`
+  font-size: 25px;
+  font-weight: bold;
+` 

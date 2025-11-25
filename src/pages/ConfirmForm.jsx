@@ -12,7 +12,8 @@ export const ConfirmForm = (props) => {
       return;
     }
 
-    window.woff
+    try{
+      window.woff
       .sendMessage({
         content: `kintone問い合わせ
         \n名前：${nameValue}
@@ -25,6 +26,11 @@ export const ConfirmForm = (props) => {
       .catch((err) => {
         console.log("error", err);
       });
+
+      alert("送信されました")
+    }catch(e){
+      alert("エラーが発生しました")
+    }
   };
   return (
     <StyledComfirmWrapper>
