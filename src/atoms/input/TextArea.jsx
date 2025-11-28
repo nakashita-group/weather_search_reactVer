@@ -7,7 +7,7 @@ export const TextArea=(props)=>{
         <StyledInput onChange={onChange} 
         value={value}
         placeholder="こちらにお問い合わせ内容を入力してください"
-        cols={45}
+        cols={35}
         rows={10}/>
     )
 }
